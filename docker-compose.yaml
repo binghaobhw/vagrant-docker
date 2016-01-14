@@ -1,0 +1,10 @@
+ltp:
+  image: ubuntu:14.04
+  ports:
+    - "12345:12345"
+
+solr:
+  image: solr:5.3.1
+  ports:
+    - "8983:8983"
+

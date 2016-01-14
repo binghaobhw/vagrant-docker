@@ -1,0 +1,7 @@
+FROM ubuntu:14.04
+RUN apt-get install -y cmake \
+    g++ && \
+    mkdir -p /opt && \
+    wget -q -O - https://github.com/HIT-SCIR/ltp/archive/v3.3.0.tar.gz | tar -zx -C /opt && \
+    cd /opt/ltp-3.3.0 && ./configure && make
+ENTRYPOINT ["/opt/ltp-3.3.0/bin/ltp_server", "--log-level 2", "--port 12345"]
