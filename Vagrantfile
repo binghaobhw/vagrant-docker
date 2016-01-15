@@ -13,7 +13,9 @@ end
 
 Vagrant.configure(2) do |config|
   config.vm.box = "ailispaw/docker-root"
-  config.vm.define = "docker-host"
+  config.vm.box_version = "1.2.8"
+  config.vm.provider "virtualbox"
+  config.vm.define "docker-host"
   config.vm.hostname = "docker-host"
   config.vm.synced_folder ".", "/vagrant"
 
