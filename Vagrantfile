@@ -17,7 +17,10 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox"
   config.vm.define "docker-host"
   config.vm.hostname = "docker-host"
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder "/programs/solr/server/solr/collection1", "/collection1"
+  config.vm.synced_folder "/programs/ltp-3.3.0/ltp_data", "/ltp_data"
+  config.vm.network "forwarded_port", guest: 12345, host: 12345
+  config.vm.network "forwarded_port", guest: 8983, host: 8983
 
   # for NFS synced folder
   # config.vm.network "private_network", ip: "192.168.33.10"
@@ -43,5 +46,4 @@ Vagrant.configure(2) do |config|
   #  d.run "--name solr -d -p 8983:8983 -t solr:5.3.1"
   #end
 
-  #config.vm.network :forwarded_port, guest: 8983, host: 8983
 end
